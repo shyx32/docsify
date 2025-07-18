@@ -55,7 +55,7 @@ export function removeAtag(str = '') {
  *
  * @return {string}   str   The string after delete the docsifyIgnore configs.
  */
-export function getAndRemoveDocisfyIgnorConfig(content = '') {
+export function getAndRemoveDocsifyIgnoreConfig(content = '') {
   let ignoreAllSubs, ignoreSubHeading;
   if (/<!-- {docsify-ignore} -->/g.test(content)) {
     content = content.replace('<!-- {docsify-ignore} -->', '');
@@ -79,3 +79,6 @@ export function getAndRemoveDocisfyIgnorConfig(content = '') {
 
   return { content, ignoreAllSubs, ignoreSubHeading };
 }
+
+// Keep misspelled function for backward compatibility
+export const getAndRemoveDocisfyIgnorConfig = getAndRemoveDocsifyIgnoreConfig;

@@ -26,13 +26,14 @@ export function stringifyQuery(obj, ignores = []) {
   const qs = [];
 
   for (const key in obj) {
-    if (ignores.indexOf(key) > -1) {
+    if (ignores.includes(key)) {
       continue;
     }
 
+    const value = obj[key];
     qs.push(
-      obj[key]
-        ? `${encode(key)}=${encode(obj[key])}`.toLowerCase()
+      value !== undefined && value !== null
+        ? `${encode(key)}=${encode(value)}`
         : encode(key)
     );
   }

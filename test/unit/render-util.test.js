@@ -1,7 +1,7 @@
 const {
   removeAtag,
   getAndRemoveConfig,
-  getAndRemoveDocisfyIgnorConfig,
+  getAndRemoveDocsifyIgnoreConfig,
 } = require('../../src/core/render/utils');
 
 const { tree } = require(`../../src/core/render/tpl`);
@@ -21,12 +21,12 @@ describe('core/render/utils', () => {
     });
   });
 
-  // getAndRemoveDocisfyIgnorConfig()
+  // getAndRemoveDocsifyIgnoreConfig()
   // ---------------------------------------------------------------------------
-  describe('getAndRemoveDocisfyIgnorConfig()', () => {
-    test('getAndRemoveDocisfyIgnorConfig from <!-- {docsify-ignore} -->', () => {
+  describe('getAndRemoveDocsifyIgnoreConfig()', () => {
+    test('getAndRemoveDocsifyIgnoreConfig from <!-- {docsify-ignore} -->', () => {
       const { content, ignoreAllSubs, ignoreSubHeading } =
-        getAndRemoveDocisfyIgnorConfig(
+        getAndRemoveDocsifyIgnoreConfig(
           'My Ignore Title<!-- {docsify-ignore} -->'
         );
       expect(content).toBe('My Ignore Title');
@@ -34,9 +34,9 @@ describe('core/render/utils', () => {
       expect(ignoreAllSubs === undefined).toBeTruthy();
     });
 
-    test('getAndRemoveDocisfyIgnorConfig from <!-- {docsify-ignore-all} -->', () => {
+    test('getAndRemoveDocsifyIgnoreConfig from <!-- {docsify-ignore-all} -->', () => {
       const { content, ignoreAllSubs, ignoreSubHeading } =
-        getAndRemoveDocisfyIgnorConfig(
+        getAndRemoveDocsifyIgnoreConfig(
           'My Ignore Title<!-- {docsify-ignore-all} -->'
         );
       expect(content).toBe('My Ignore Title');
@@ -44,17 +44,17 @@ describe('core/render/utils', () => {
       expect(ignoreSubHeading === undefined).toBeTruthy();
     });
 
-    test('getAndRemoveDocisfyIgnorConfig from {docsify-ignore}', () => {
+    test('getAndRemoveDocsifyIgnoreConfig from {docsify-ignore}', () => {
       const { content, ignoreAllSubs, ignoreSubHeading } =
-        getAndRemoveDocisfyIgnorConfig('My Ignore Title{docsify-ignore}');
+        getAndRemoveDocsifyIgnoreConfig('My Ignore Title{docsify-ignore}');
       expect(content).toBe('My Ignore Title');
       expect(ignoreSubHeading).toBeTruthy();
       expect(ignoreAllSubs === undefined).toBeTruthy();
     });
 
-    test('getAndRemoveDocisfyIgnorConfig from {docsify-ignore-all}', () => {
+    test('getAndRemoveDocsifyIgnoreConfig from {docsify-ignore-all}', () => {
       const { content, ignoreAllSubs, ignoreSubHeading } =
-        getAndRemoveDocisfyIgnorConfig('My Ignore Title{docsify-ignore-all}');
+        getAndRemoveDocsifyIgnoreConfig('My Ignore Title{docsify-ignore-all}');
       expect(content).toBe('My Ignore Title');
       expect(ignoreAllSubs).toBeTruthy();
       expect(ignoreSubHeading === undefined).toBeTruthy();
