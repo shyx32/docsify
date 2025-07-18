@@ -32,7 +32,7 @@ export function stringifyQuery(obj, ignores = []) {
 
     const value = obj[key];
     qs.push(
-      value !== undefined && value !== null
+      value != null
         ? `${encode(key)}=${encode(value)}`
         : encode(key)
     );
